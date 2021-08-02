@@ -7,6 +7,11 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class FibService {
+    /** @Cacheable: skip the method execution if key is present,
+     * Do the method exec only if the key is not present & store the result
+     * @CacheEvict: evict happens after method exec
+     * @CachePut: do the method exec always & update the corresponding cache
+     */
 
     // have a strategy for cache evict
     @Cacheable(value = "math:fib", key = "#index")
