@@ -1,25 +1,30 @@
 package com.young.redisperformance.controller;
 
 import com.young.redisperformance.entity.Product;
-import com.young.redisperformance.service.ProductServiceV1;
+import com.young.redisperformance.service.ProductServiceV2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
 
 @RestController
-@RequestMapping("/product/v1")
-public class ProductControllerV1 {
+@RequestMapping("/product/v2")
+public class ProductControllerV2 {
 
     @Autowired
-    private ProductServiceV1 productServiceV1;
+    private ProductServiceV2 productServiceV2;
 
     @GetMapping("/{id}")
     public Mono<Product> getProduct(@PathVariable int id) {
-        return this.productServiceV1.getProduct(id);
+        return this.productServiceV2.getProduct(id);
     }
 
     @PutMapping("/{id}")
     public Mono<Product> updateProduct(@PathVariable int id, @RequestBody Mono<Product> productMono) {
-        return this.productServiceV1.updateProduct(id, productMono);
+        return this.productServiceV2.updateProduct(id, productMono);
+    }
+
+    @DeleteMapping("/{id}")
+    public Mono<Void> deleteProduct(@PathVariable int id) {
+        return this.productServiceV2.deleteProduct(id);
     }
 }
