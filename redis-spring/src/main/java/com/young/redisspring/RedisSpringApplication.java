@@ -7,7 +7,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 @EnableCaching
 @EnableScheduling
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "com.young.redisspring.geo")
 public class RedisSpringApplication {
 
     public static void main(String[] args) {
